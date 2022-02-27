@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 typedef struct Node
 {
@@ -77,6 +78,56 @@ void    swaptest(Node *stack)
     stack->next->value = temp;
 }
 
+Node *rotatetest(Node *stack)
+{
+    int exvalue;
+    Node *new_node;
+
+    exvalue = stack->value;
+    new_node = malloc(sizeof(Node));
+    if (new_node == NULL)
+        exit(3);
+    while (stack->next != NULL)
+    {
+        stack = stack->next;
+        insert_number(&new_node, stack->value);
+    }
+    insert_number(&new_node, exvalue);
+    return(new_node);
+}
+
+void remove_element(Node** root, int value)
+{
+    if (root == NULL)
+        return;
+    if ((*root)->value == value)
+    {
+        Node *to_remove = *root;
+        *root = (*root)->next;
+        free(to_remove);
+        return;
+    }
+    Node *curr = *root;
+    while (curr->next != NULL)
+    {
+        if (curr->next->value == value)
+        {
+            Node *to_remove = curr->next;
+            curr->next = curr->next->next;
+            free(to_remove);
+            return;
+        }
+        curr = curr->next;
+    }
+}
+
+void ft_ra(Node *stack)
+{
+    stack = rotatetest(stack);
+    remove_element(&stack, stack->value);
+    write(1, "ra", 2);
+}
+
 int main(int argc, char *argv[])
 {
     Node *stack;
@@ -84,13 +135,12 @@ int main(int argc, char *argv[])
     if (argc <= 1)
         exit(1);
     stack = stack_a(argc, argv);
-    swaptest(stack);
-    swaptest(stack);
-    swaptest(stack);
+    stack = rotatetest(stack);
+    remove_element(&stack, stack->value);
     Node *curr = stack;
     while (curr != NULL)
     {
-        printf("%d\n", curr->value);
+        printf("\n%d", curr->value);
         curr = curr->next;
     }
     deallocate(&stack);
