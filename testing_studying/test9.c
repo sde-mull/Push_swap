@@ -20,7 +20,15 @@ typedef struct Node
     struct Node *next;
 } Node;
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
 int	ft_atoi(const char *str);
+
+t_list  *ft_lstlast(t_list *lst);
 
 void insert_number(Node **root, int value)
 {
@@ -139,6 +147,7 @@ int main(int argc, char *argv[])
     if (argc <= 1)
         exit(1);
     stack = stack_a(argc, argv);
+    stack = reversetest(stack);
     Node *curr = stack;
     while (curr != NULL)
     {

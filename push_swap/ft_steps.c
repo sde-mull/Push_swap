@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_steps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 14:24:55 by sde-mull          #+#    #+#             */
-/*   Updated: 2021/11/09 15:24:17 by sde-mull         ###   ########.fr       */
+/*   Created: 2022/02/28 18:21:07 by sde-mull          #+#    #+#             */
+/*   Updated: 2022/02/28 19:25:32 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_push_swap.h"
 
-t_list	*ft_lstlast(t_list *lst)
+Node    *ft_steps(int argc, char *argv[])
 {
-	if (lst)
-	{
-		while (lst->next)
-			lst = lst->next;
-	}
-	return (lst);
+    Node *stack_a;
+    
+    stack_a = stack(argc, argv);
+    stack_a = ft_rb(stack_a);
+    stack_a = ft_rb(stack_a);
+    stack_a = ft_rb(stack_a);
+    stack_a = ft_rb(stack_a);
+    stack_a = ft_rb(stack_a);
+    return(stack_a);
 }

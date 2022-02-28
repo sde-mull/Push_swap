@@ -10,7 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char* argv[])
+#include "ft_push_swap.h"
+
+int	main(int argc, char *argv[])
 {
-        return(0);
+	Node	*stack;
+
+	if (argc <= 1)
+		exit(1);
+	stack = ft_steps(argc, argv);
+	Node *curr = stack;
+    while (curr != NULL)
+    {
+        printf("%d\n", curr->value);
+        curr = curr->next;
+    }
+	deallocate(&stack);
+	return(0);
 }
