@@ -12,24 +12,28 @@
 
 #include "ft_push_swap.h"
 
-Node  *ft_rb(Node *stack_B)
-{
-    Node *new;
 
-    new = rotate(stack_B);
-    remove_element(&new, new->value);
-    write(1, "rb\n", 4);
-    deallocate(&stack_B);
-    return(new);
+void    ft_ra(Node **stack_A)
+{
+    rotate(stack_A);
+    write(1, "ra\n", 4);
 }
 
-Node  *ft_rr(Node *stack_A, Node *stack_B)
+void    ft_rb(Node **stack_B)
 {
-    Node    *new;
+    rotate(stack_B);
+    write(1, "rb\n", 4);
+}
 
-    new = rotate(stack_A);
-    remove_element(&new, new->value);
+void    ft_rr(Node **stack_A, Node **stack_B)
+{
+    rotate(stack_A);
+    rotate(stack_B);
     write(1, "rr\n", 4);
-    deallocate(&stack_A);
-    return(new);
+}
+
+void    ft_pb(Node **stack_A, Node **stack_B)
+{
+    push(stack_A, stack_B);
+    write(1, "pb\n", 4);
 }

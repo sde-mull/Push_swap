@@ -21,45 +21,59 @@ void    swap(Node *stack)
     stack->next->value = temp;
 }
 
-Node *rotate(Node *stack)
+void    rotate(Node **stack)
 {
-    int exvalue;
-    Node *new_node;
+    Node *first;
+    Node *last;
 
-    exvalue = stack->value;
-    new_node = malloc(sizeof(Node));
-    if (new_node == NULL)
-        exit(3);
-    while (stack->next != NULL)
-    {
-        stack = stack->next;
-        insert_number(&new_node, stack->value);
-    }
-    insert_number(&new_node, exvalue);
-    return(new_node);
+    first = *stack;
+    last = *stack;
+    if (*stack == NULL || (*stack)->next == NULL)
+        return;
+    while (last->next != NULL)
+        last = last->next;
+    *stack = first->next;
+    first->next = NULL;
+    last->next = first;   
 }
 
-void remove_element(Node** root, int value)
+void    reverse(Node **stack)
 {
-    if (root == NULL)
+    Node *slast;
+    Node *last;
+
+    slast = NULL;
+    last = *stack;
+    if (*stack == NULL || (*stack)->next == NULL)
         return;
-    if ((*root)->value == value)
+    while (last->next != NULL)
     {
-        Node *to_remove = *root;
-        *root = (*root)->next;
-        free(to_remove);
+        slast = last;
+        last = last->next;
+    }
+    slast->next = NULL;
+    last->next = *stack;
+    *stack = last;
+}
+
+void    push(Node **srcstack, Node **dststack)
+{
+    Node *srctmp;
+    Node *dsttmp;
+
+    srctmp = *srcstack;
+    dsttmp = *dststack;
+    if (*srcstack == NULL)
+        return;
+    if (*dststack == NULL)
+    {
+        *srcstack = srctmp->next;
+        srctmp->next = NULL;
+        *dststack = srctmp;
         return;
     }
-    Node *curr = *root;
-    while (curr->next != NULL)
-    {
-        if (curr->next->value == value)
-        {
-            Node *to_remove = curr->next;
-            curr->next = curr->next->next;
-            free(to_remove);
-            return;
-        }
-        curr = curr->next;
-    }
+    *srcstack = srctmp->next;
+    srctmp->next = NULL;
+    srctmp->next = *dststack;
+    *dststack = srctmp;
 }

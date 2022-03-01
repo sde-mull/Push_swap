@@ -32,10 +32,16 @@ void    swap(Node *stack);
 void    ft_sa(Node *stack_A);
 void    ft_sb(Node *stack_B);
 void    ft_ss(Node *stack_A, Node *stack_B);
-Node    *ft_ra(Node *stack_A);
-Node    *ft_rr(Node *stack_A, Node *stack_B);
-Node    *ft_rb(Node *stack_B);
-Node    *rotate(Node *stack);
-void    remove_element(Node** root, int value);
+void    ft_rb(Node **stack_B);
+void    ft_rr(Node **stack_A, Node **stack_B);
+void    ft_ra(Node **stack_A);
+void    rotate(Node **stack);
+void    ft_rra(Node **stack_A);
+void    ft_rrb(Node **stack_B);
+void    ft_rrr(Node **stack_A, Node **stack_B);
+void    reverse(Node **stack);
+void    push(Node **srcstack, Node **dststack);
+void    ft_pa(Node **stack_A, Node **stack_B);
+void    ft_pb(Node **stack_A, Node **stack_B);
 
 #endif

@@ -14,7 +14,10 @@
 
 void insert_number(Node **root, int value)
 {
-    Node* new_node = malloc(sizeof(Node));
+    Node* new_node;
+    Node *curr;
+
+    new_node  = malloc(sizeof(Node));
     if (new_node == NULL)
         exit(2);
     new_node->next = NULL;
@@ -25,7 +28,7 @@ void insert_number(Node **root, int value)
         *root = new_node;
         return ;
     }
-    Node *curr = *root;
+    curr = *root;
     while (curr->next != NULL)
         curr = curr->next;
     curr->next = new_node;
@@ -35,7 +38,8 @@ Node *stack(int argc, char *argv[])
 {
     int index;
     int converted;
-    Node *root = NULL;
+    Node *root;
+    root = NULL;
 
     index = 1;
     while (index < argc)
@@ -49,10 +53,13 @@ Node *stack(int argc, char *argv[])
 
 void deallocate(Node **root)
 {
-    Node *curr = *root;
+    Node *curr;
+    Node *aux; 
+
+    curr = *root;
     while (curr != NULL)
     {
-        Node *aux = curr;
+        aux = curr;
         curr = curr->next;
         free(aux);
     }

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_commands3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 20:34:43 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/01/18 20:34:43 by sde-mull         ###   ########.fr       */
+/*   Created: 2022/03/01 21:36:43 by sde-mull          #+#    #+#             */
+/*   Updated: 2022/03/01 21:36:43 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	main(int argc, char *argv[])
+void    ft_rra(Node **stack_A)
 {
-	Node	*stack;
+    reverse(stack_A);
+    write(1, "rra\n", 5);
+}
 
-	if (argc <= 1)
-		exit(1);
-	stack = ft_steps(argc, argv);
-	deallocate(&stack);
-	return(0);
+void    ft_rrb(Node **stack_B)
+{
+    reverse(stack_B);
+    write(1, "rrb\n", 5);
+}
+
+void    ft_rrr(Node **stack_A, Node **stack_B)
+{
+    reverse(stack_A);
+    reverse(stack_B);
+    write(1, "rrr\n", 5);
 }

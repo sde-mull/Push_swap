@@ -31,13 +31,8 @@ void    ft_ss(Node *stack_A, Node *stack_B)
     write(1, "ss\n", 4);
 }
 
-Node  *ft_ra(Node *stack_A)
+void    ft_pa(Node **stack_A, Node **stack_B)
 {
-    Node *new;
-
-    new = rotate(stack_A);
-    remove_element(&new, new->value);
-    write(1, "ra\n", 4);
-    deallocate(&stack_A);
-    return(new);
+    push(stack_B, stack_A);
+    write(1, "pa\n", 4);
 }

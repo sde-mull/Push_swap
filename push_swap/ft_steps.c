@@ -15,12 +15,32 @@
 Node    *ft_steps(int argc, char *argv[])
 {
     Node *stack_a;
-    
+    Node *stack_b;
+    int index;
+
+    index = 1;
+    stack_b = NULL;
     stack_a = stack(argc, argv);
-    stack_a = ft_rb(stack_a);
-    stack_a = ft_rb(stack_a);
-    stack_a = ft_rb(stack_a);
-    stack_a = ft_rb(stack_a);
-    stack_a = ft_rb(stack_a);
+    while (index < 5)
+    {
+        insert_number(&stack_b, index);
+        index++;
+    }
+    ft_pa(&stack_a, &stack_b);
+    ft_pa(&stack_a, &stack_b);
+    Node *curr = stack_a;
+    printf("stack_a:\n");
+    while (curr != NULL)
+    {
+        printf("%d\n", curr->value);
+        curr = curr->next;
+    }
+    Node *curr1 = stack_b;
+    printf("stack_b:\n");
+    while (curr1 != NULL)
+    {
+        printf("%d\n", curr1->value);
+        curr1 = curr1->next;
+    }
     return(stack_a);
 }
