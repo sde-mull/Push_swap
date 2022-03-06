@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <limits.h>
 #include "../Libft/libft.h"
 
 typedef struct Node
@@ -28,10 +29,10 @@ void    insert_number(Node **root, int value);
 Node    *ft_steps(int argc, char *argv[]);
 Node    *stack(int argc, char *argv[]);
 void    deallocate(Node **root);
-void    swap(Node *stack);
-void    ft_sa(Node *stack_A);
-void    ft_sb(Node *stack_B);
-void    ft_ss(Node *stack_A, Node *stack_B);
+void    swap(Node **stack);
+void    ft_sa(Node **stack_A);
+void    ft_sb(Node **stack_B);
+void    ft_ss(Node **stack_A, Node **stack_B);
 void    ft_rb(Node **stack_B);
 void    ft_rr(Node **stack_A, Node **stack_B);
 void    ft_ra(Node **stack_A);
@@ -43,5 +44,10 @@ void    reverse(Node **stack);
 void    push(Node **srcstack, Node **dststack);
 void    ft_pa(Node **stack_A, Node **stack_B);
 void    ft_pb(Node **stack_A, Node **stack_B);
+void    ft_sort(Node **stack_A, Node **stack_B);
+void    ft_check_number_error(char *argv);
+int     check_sorted(Node **stack_A);
+int     ft_stack_lenght(Node **stack_A);
+void    ft_check_error_limits(long long converted);
 
 #endif

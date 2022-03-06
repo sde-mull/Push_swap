@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_commands.c                                      :+:      :+:    :+:   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 12:46:51 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/02/23 12:46:51 by sde-mull         ###   ########.fr       */
+/*   Created: 2022/03/02 17:53:45 by sde-mull          #+#    #+#             */
+/*   Updated: 2022/03/02 17:53:45 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void    ft_sa(Node **stack_A)
+void ft_sort(Node **stack_A, Node **stack_B)
 {
-    swap(stack_A);
-    write(1, "sa\n", 4);
+    int count;
+
+    count = ft_stack_lenght(stack_A);
+    printf("The stack have %d numbers\n", count);
 }
 
-void    ft_sb(Node **stack_B)
+int check_sorted(Node **stack_A)
 {
-    swap(stack_B);
-    write(1, "sb\n", 4);
-}
+    Node *first;
+	Node *second;
 
-void    ft_ss(Node **stack_A, Node **stack_B)
-{
-    swap(stack_A);
-    swap(stack_B);
-    write(1, "ss\n", 4);
-}
-
-void    ft_pa(Node **stack_A, Node **stack_B)
-{
-    push(stack_B, stack_A);
-    write(1, "pa\n", 4);
+    first = *stack_A;
+	second = (*stack_A)->next;
+	while(second != NULL)
+	{
+		if (first->value > second->value)
+			return(1);
+		first = first->next;
+		second = second->next;
+	}
+	return(0);
 }

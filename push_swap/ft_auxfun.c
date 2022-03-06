@@ -37,14 +37,16 @@ void insert_number(Node **root, int value)
 Node *stack(int argc, char *argv[])
 {
     int index;
-    int converted;
+    long long converted;
     Node *root;
     root = NULL;
 
     index = 1;
     while (index < argc)
     {
-        converted = ft_atoi(argv[index]);
+        ft_check_number_error(argv[index]);
+        converted = ft_atoil(argv[index]);
+        ft_check_error_limits(converted);
         insert_number(&root, converted);
         index++;
     }
@@ -65,3 +67,4 @@ void deallocate(Node **root)
     }
     *root = NULL;
 }
+

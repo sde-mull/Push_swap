@@ -12,13 +12,13 @@
 
 #include "ft_push_swap.h"
 
-void    swap(Node *stack)
+void    swap(Node **stack)
 {
     int temp;
 
-    temp = stack->value;
-    stack->value = stack->next->value;
-    stack->next->value = temp;
+    temp = (*stack)->value;
+    (*stack)->value = (*stack)->next->value;
+    (*stack)->next->value = temp;
 }
 
 void    rotate(Node **stack)

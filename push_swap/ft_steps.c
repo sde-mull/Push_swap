@@ -21,13 +21,7 @@ Node    *ft_steps(int argc, char *argv[])
     index = 1;
     stack_b = NULL;
     stack_a = stack(argc, argv);
-    while (index < 5)
-    {
-        insert_number(&stack_b, index);
-        index++;
-    }
-    ft_pa(&stack_a, &stack_b);
-    ft_pa(&stack_a, &stack_b);
+    ft_sort(&stack_a, &stack_b);
     Node *curr = stack_a;
     printf("stack_a:\n");
     while (curr != NULL)

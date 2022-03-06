@@ -58,6 +58,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 int		ft_isprint(int c);
+long long	ft_atoil(const char *str);
 
 //Bonus
 t_list	*ft_lstnew(void *content);
