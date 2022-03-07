@@ -12,29 +12,30 @@
 
 #include "ft_push_swap.h"
 
-Node    *ft_steps(int argc, char *argv[])
+t_Node	*ft_steps(int argc, char *argv[])
 {
-    Node *stack_a;
-    Node *stack_b;
-    int index;
+	t_Node	*stack_a;
+	t_Node	*stack_b;
+	int		index;
 
-    index = 1;
-    stack_b = NULL;
-    stack_a = stack(argc, argv);
-    ft_sort(&stack_a, &stack_b);
-    Node *curr = stack_a;
-    printf("stack_a:\n");
-    while (curr != NULL)
-    {
-        printf("%d\n", curr->value);
-        curr = curr->next;
-    }
-    Node *curr1 = stack_b;
-    printf("stack_b:\n");
-    while (curr1 != NULL)
-    {
-        printf("%d\n", curr1->value);
-        curr1 = curr1->next;
-    }
-    return(stack_a);
+	index = 1;
+	stack_b = NULL;
+	stack_a = ft_stack(argc, argv);
+	ft_check_double_error(&stack_a);
+	ft_sort(&stack_a, &stack_b);
+	t_Node *curr = stack_a;
+	printf("stack_a:\n");
+	while (curr != NULL)
+	{
+		printf("%d\n", curr->value);
+		curr = curr->next;
+	}
+	t_Node *curr1 = stack_b;
+	printf("stack_b:\n");
+	while (curr1 != NULL)
+	{
+		printf("%d\n", curr1->value);
+		curr1 = curr1->next;
+	}
+	return (stack_a);
 }

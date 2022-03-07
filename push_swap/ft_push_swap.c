@@ -14,11 +14,11 @@
 
 int	main(int argc, char *argv[])
 {
-	Node	*stack;
+	t_Node	*stack;
 
 	if (argc <= 1)
 		exit(1);
 	stack = ft_steps(argc, argv);
-	deallocate(&stack);
-	return(0);
+	ft_deallocate(&stack);
+	return (0);
 }

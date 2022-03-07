@@ -14,25 +14,25 @@
 
 void    ft_sa(Node **stack_A)
 {
-    swap(stack_A);
+    ft_swap(stack_A);
     write(1, "sa\n", 4);
 }
 
 void    ft_sb(Node **stack_B)
 {
-    swap(stack_B);
+    ft_swap(stack_B);
     write(1, "sb\n", 4);
 }
 
 void    ft_ss(Node **stack_A, Node **stack_B)
 {
-    swap(stack_A);
-    swap(stack_B);
+    ft_swap(stack_A);
+    ft_swap(stack_B);
     write(1, "ss\n", 4);
 }
 
 void    ft_pa(Node **stack_A, Node **stack_B)
 {
-    push(stack_B, stack_A);
+    ft_push(stack_B, stack_A);
     write(1, "pa\n", 4);
 }

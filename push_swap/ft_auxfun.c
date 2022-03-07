@@ -12,59 +12,57 @@
 
 #include "ft_push_swap.h"
 
-void insert_number(Node **root, int value)
+void	ft_insert_number(t_Node **root, int value)
 {
-    Node* new_node;
-    Node *curr;
+	t_Node	*new_node;
+	t_Node	*curr;
 
-    new_node  = malloc(sizeof(Node));
-    if (new_node == NULL)
-        exit(2);
-    new_node->next = NULL;
-    new_node->value = value;
-
-    if (*root == NULL)
-    {
-        *root = new_node;
-        return ;
-    }
-    curr = *root;
-    while (curr->next != NULL)
-        curr = curr->next;
-    curr->next = new_node;
+	new_node = malloc(sizeof(t_Node));
+	if (new_node == NULL)
+		exit(2);
+	new_node->next = NULL;
+	new_node->value = value;
+	if (*root == NULL)
+	{
+		*root = new_node;
+		return ;
+	}
+	curr = *root;
+	while (curr->next != NULL)
+		curr = curr->next;
+	curr->next = new_node;
 }
 
-Node *stack(int argc, char *argv[])
+t_Node	*ft_stack(int argc, char *argv[])
 {
-    int index;
-    long long converted;
-    Node *root;
-    root = NULL;
+	int			index;
+	long long	converted;
+	t_Node		*root;
 
-    index = 1;
-    while (index < argc)
-    {
-        ft_check_number_error(argv[index]);
-        converted = ft_atoil(argv[index]);
-        ft_check_error_limits(converted);
-        insert_number(&root, converted);
-        index++;
-    }
-    return(root);
+	root = NULL;
+	index = 1;
+	while (index < argc)
+	{
+		ft_check_number_error(argv[index]);
+		converted = ft_atoil(argv[index]);
+		ft_check_error_limits(converted);
+		ft_insert_number(&root, converted);
+		index++;
+	}
+	return (root);
 }
 
-void deallocate(Node **root)
+void	ft_deallocate(t_Node **root)
 {
-    Node *curr;
-    Node *aux; 
+	t_Node	*curr;
+	t_Node	*aux;
 
-    curr = *root;
-    while (curr != NULL)
-    {
-        aux = curr;
-        curr = curr->next;
-        free(aux);
-    }
-    *root = NULL;
+	curr = *root;
+	while (curr != NULL)
+	{
+		aux = curr;
+		curr = curr->next;
+		free(aux);
+	}
+	*root = NULL;
 }
-

@@ -14,19 +14,19 @@
 
 void    ft_rra(Node **stack_A)
 {
-    reverse(stack_A);
+    ft_reverse(stack_A);
     write(1, "rra\n", 5);
 }
 
 void    ft_rrb(Node **stack_B)
 {
-    reverse(stack_B);
+    ft_reverse(stack_B);
     write(1, "rrb\n", 5);
 }
 
 void    ft_rrr(Node **stack_A, Node **stack_B)
 {
-    reverse(stack_A);
-    reverse(stack_B);
+    ft_reverse(stack_A);
+    ft_reverse(stack_B);
     write(1, "rrr\n", 5);
 }

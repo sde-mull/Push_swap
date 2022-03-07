@@ -12,27 +12,43 @@
 
 #include "ft_push_swap.h"
 
-void ft_sort(Node **stack_A, Node **stack_B)
+void	ft_sort(t_Node **stack_A, t_Node **stack_B)
 {
-    int count;
+	int	count;
+	int	sort;
 
-    count = ft_stack_lenght(stack_A);
-    printf("The stack have %d numbers\n", count);
+	sort = 0;
+	sort = ft_check_sorted(stack_A);
+	count = ft_stack_length(stack_A);
+	if (sort == 1)
+		return ;
+	if (count == 3)
+		ft_III_sort(stack_A);
 }
 
-int check_sorted(Node **stack_A)
+void	ft_3_sort(t_Node **stack_A)
 {
-    Node *first;
-	Node *second;
+	t_Node	*first;
+	t_Node	*mid;
+	t_Node	*last;
 
-    first = *stack_A;
-	second = (*stack_A)->next;
-	while(second != NULL)
+	first = *stack_A;
+	mid = first->next;
+	last = mid->next;
+	if (first->value > mid ->value && last->value > first->value)
+		ft_sa(stack_A);
+	else if (first->value > mid ->value && last->value < mid->value)
 	{
-		if (first->value > second->value)
-			return(1);
-		first = first->next;
-		second = second->next;
+		ft_sa(stack_A);
+		ft_rra(stack_A);
 	}
-	return(0);
+	else if (first->value > mid ->value && last->value < first->value)
+		ft_ra(stack_A);
+	else if (mid->value > first->value && first->value < last->value)
+	{
+		ft_sa(stack_A);
+		ft_ra(stack_A);
+	}
+	else if (mid->value > first->value && first->value > last->value)
+		ft_rra(stack_A);
 }
