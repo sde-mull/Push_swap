@@ -44,12 +44,15 @@ void	ft_reverse(t_Node **stack);
 void	ft_push(t_Node **srcstack, t_Node **dststack);
 void	ft_pa(t_Node **stack_A, t_Node **stack_B);
 void	ft_pb(t_Node **stack_A, t_Node **stack_B);
-void	ft_sort(t_Node **stack_A, t_Node **stack_B);
+void	ft_sort(t_Node **stack_A, t_Node **stack_B, int argc);
 void	ft_check_number_error(char *argv);
 int		ft_check_sorted(t_Node **stack_A);
 int		ft_stack_length(t_Node **stack_A);
 void	ft_check_error_limits(long long converted);
 void	ft_check_double_error(t_Node **stack_A);
 void	ft_3_sort(t_Node **stack_A);
+void	ft_2_sort(t_Node **stack_A);
+void    ft_sort_arr(int *arr, t_Node *stack_A, int argc);
+void    ft_sort_all(t_Node **stack_A, t_Node **stack_B, int argc);
 
 #endif

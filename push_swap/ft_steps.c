@@ -22,20 +22,6 @@ t_Node	*ft_steps(int argc, char *argv[])
 	stack_b = NULL;
 	stack_a = ft_stack(argc, argv);
 	ft_check_double_error(&stack_a);
-	ft_sort(&stack_a, &stack_b);
-	t_Node *curr = stack_a;
-	printf("stack_a:\n");
-	while (curr != NULL)
-	{
-		printf("%d\n", curr->value);
-		curr = curr->next;
-	}
-	t_Node *curr1 = stack_b;
-	printf("stack_b:\n");
-	while (curr1 != NULL)
-	{
-		printf("%d\n", curr1->value);
-		curr1 = curr1->next;
-	}
+	ft_sort(&stack_a, &stack_b, argc);
 	return (stack_a);
 }
