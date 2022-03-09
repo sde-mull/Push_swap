@@ -59,3 +59,37 @@ void	ft_check_double_error(t_Node **stack_A)
 		first = first->next;
 	}
 }
+
+int	ft_check_sorted(t_Node **stack_A)
+{
+	t_Node	*first;
+	t_Node	*second;
+
+	first = *stack_A;
+	second = (*stack_A)->next;
+	while (second != NULL)
+	{
+		if (first->value > second->value)
+			return (0);
+		first = first->next;
+		second = second->next;
+	}
+	return (1);
+}
+
+int	ft_check_inv_sorted(t_Node **stack_B)
+{
+	t_Node	*first;
+	t_Node	*second;
+
+	first = *stack_B;
+	second = (*stack_B)->next;
+	while (second != NULL)
+	{
+		if (first->value < second->value)
+			return (0);
+		first = first->next;
+		second = second->next;
+	}
+	return (1);
+}

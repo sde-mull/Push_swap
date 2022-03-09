@@ -12,14 +12,14 @@
 
 #include "ft_push_swap.h"
 
-void	ft_sort(t_Node **stack_A, t_Node **stack_B, int argc)
+void	ft_sort(t_Node **stack_A, t_Node **stack_B)
 {
 	int	count;
 	int	sort;
 
 	sort = 0;
 	sort = ft_check_sorted(stack_A);
-	count = ft_stack_length(stack_A);
+	count = ft_stack_length(*stack_A);
 	if (sort == 1)
 		return ;
 	if (count == 2)
@@ -27,7 +27,7 @@ void	ft_sort(t_Node **stack_A, t_Node **stack_B, int argc)
 	if (count == 3)
 		ft_3_sort(stack_A);
 	if (count >= 4)
-		ft_sort_all(stack_A, stack_B, argc);
+		ft_sort_all(stack_A, stack_B);
 }
 
 void	ft_2_sort(t_Node **stack_A)
