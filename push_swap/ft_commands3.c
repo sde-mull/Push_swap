@@ -15,18 +15,18 @@
 void	ft_rra(t_Node **stack_A)
 {
 	ft_reverse(stack_A);
-	write(1, "rra\n", 5);
+	write(1, "rra\n", 4);
 }
 
 void	ft_rrb(t_Node **stack_B)
 {
 	ft_reverse(stack_B);
-	write(1, "rrb\n", 5);
+	write(1, "rrb\n", 4);
 }
 
 void	ft_rrr(t_Node **stack_A, t_Node **stack_B)
 {
 	ft_reverse(stack_A);
 	ft_reverse(stack_B);
-	write(1, "rrr\n", 5);
+	write(1, "rrr\n", 4);
 }

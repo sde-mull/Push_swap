@@ -15,24 +15,24 @@
 void	ft_ra(t_Node **stack_A)
 {
 	ft_rotate(stack_A);
-	write(1, "ra\n", 4);
+	write(1, "ra\n", 3);
 }
 
 void	ft_rb(t_Node **stack_B)
 {
 	ft_rotate(stack_B);
-	write(1, "rb\n", 4);
+	write(1, "rb\n", 3);
 }
 
 void	ft_rr(t_Node **stack_A, t_Node **stack_B)
 {
 	ft_rotate(stack_A);
 	ft_rotate(stack_B);
-	write(1, "rr\n", 4);
+	write(1, "rr\n", 3);
 }
 
 void	ft_pb(t_Node **stack_A, t_Node **stack_B)
 {
 	ft_push(stack_A, stack_B);
-	write(1, "pb\n", 4);
+	write(1, "pb\n", 3);
 }

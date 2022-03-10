@@ -22,7 +22,12 @@ void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
 	lenmid = ft_mid_count(*stack_A);
 	midarr = malloc((lenmid) * sizeof(int));
 	index = ft_film_check(lenmid, midarr, stack_A, stack_B);
-    ft_send_value(midarr, index, stack_A, stack_B);
+	while ((*stack_B) != NULL)
+	{
+		//index = ft_check_index(*stack_B, midarr[index], index);
+    	ft_send_value(midarr, index, stack_A, stack_B);
+	}
+
 	free(midarr);
 }
 
@@ -61,6 +66,8 @@ int	ft_film_check(int lenmid, int *midarr, t_Node **stack_A, t_Node **stack_B)
 	index = 0;
 	while (index <= lenmid)
 	{
+		if (ft_stack_length(*stack_A) <= 3)
+			break;
 		midarr[index] = ft_retmidval(*stack_A);
 		ft_send_b(stack_A, stack_B, midarr[index]);
 		index++;
@@ -76,50 +83,3 @@ int	ft_film_check(int lenmid, int *midarr, t_Node **stack_A, t_Node **stack_B)
     return (index - 1);
 }
 
-void	ft_send_value(int *midarr, int index, t_Node **stack_A, t_Node **stack_B)
-{
-    int value;
-    t_Node *temp;
-
-    temp = *stack_B;
-    value = ft_get_value(midarr[index - 1], *stack_B);;
-    while (temp != NULL && temp->value >= midarr[index - 1])
-    {
-        if (value == temp->value)
-        {;
-            ft_pa(stack_A, stack_B);
-            temp = *stack_B;
-        }
-        else
-        {
-            ft_rb(stack_B);
-            temp = *stack_B;
-            break;
-        }
-    }
-}
-
-int     ft_get_value(int mid, t_Node *stack_B)
-{
-	t_Node  *temp;
-    int     value;
-
-    temp = stack_B;
-    value = 0;
-    while (temp != NULL && temp->value > mid)
-    {
-        if (temp->value > value)
-            value = temp->value;
-        temp = temp->next;
-    }
-    if (value == 0)
-    {
-        while (temp != NULL)
-        {
-            if (temp->value > value)
-                value = temp->value;
-            temp = temp->next;
-        }
-    }
-    return (value);
-}
