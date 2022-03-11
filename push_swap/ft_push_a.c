@@ -23,8 +23,7 @@ void ft_send_value(int *midarr, int index, t_Node **stack_A, t_Node **stack_B)
     value = ft_get_value(*stack_B);
     while (temp != NULL && temp->value <= midarr[index])
     {
-         printf("value is %d\n", value);
-         printf("stack value is %d\n",temp->value);
+        temp = *stack_B;
         if (value == temp->value)
         {;
             ft_pa(stack_A, stack_B);
@@ -35,7 +34,6 @@ void ft_send_value(int *midarr, int index, t_Node **stack_A, t_Node **stack_B)
         {
             len = ft_stack_length(*stack_B);
             check = ft_check_command(*stack_B, value, len);
-            printf("check is %d", check);
             ft_use_command(stack_B, check, value);
         }
     }

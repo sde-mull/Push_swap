@@ -46,7 +46,7 @@ int ft_check_command(t_Node *stack_B, int value, int len)
     return (check);
  }
 
-int ft_check_index(t_Node *stack_B, int mid, int index)
+/*int ft_check_index(t_Node *stack_B, int mid, int index)
 {
     t_Node *first;
     t_Node *last;
@@ -58,4 +58,4 @@ int ft_check_index(t_Node *stack_B, int mid, int index)
     if (last->value < mid && first->value < mid)
         return(index - 1);
     return (index);
-}
+}*/

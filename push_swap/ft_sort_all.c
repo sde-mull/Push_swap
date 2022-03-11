@@ -23,12 +23,7 @@ void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
 	midarr = malloc((lenmid) * sizeof(int));
 	index = ft_film_check(lenmid, midarr, stack_A, stack_B);
 	while ((*stack_B) != NULL)
-	{
-		//index = ft_check_index(*stack_B, midarr[index], index);
     	ft_send_value(midarr, index, stack_A, stack_B);
-	}
-
-
 	free(midarr);
 }
 
