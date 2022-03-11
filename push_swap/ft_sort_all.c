@@ -28,6 +28,7 @@ void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
     	ft_send_value(midarr, index, stack_A, stack_B);
 	}
 
+
 	free(midarr);
 }
 

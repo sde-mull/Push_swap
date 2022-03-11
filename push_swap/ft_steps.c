@@ -25,7 +25,7 @@ t_Node	*ft_steps(int argc, char *argv[])
 	ft_check_double_error(&stack_a);
 	ft_sort(&stack_a, &stack_b);
     temp = stack_a;
-    /*printf("stack_a:\n");
+    printf("stack_a:\n");
     while (temp != NULL)
     {
         printf("%d\n", temp->value);
@@ -37,6 +37,6 @@ t_Node	*ft_steps(int argc, char *argv[])
     {
         printf("%d\n", temp->value);
         temp = temp->next;
-    }*/
+    }
 	return (stack_a);
 }

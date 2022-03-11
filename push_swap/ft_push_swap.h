@@ -64,8 +64,9 @@ int     ft_check_value(t_Node *stack, int mid);
 int     ft_film_check(int lenmid, int *midarr, t_Node **stack_A, t_Node **stack_B);
 void	ft_send_value(int *midarr, int index, t_Node **stack_A, t_Node **stack_B);
 int     ft_get_value(t_Node *stack_B);
-int		ft_check_command(t_Node *stack_B, int mid, int index, int value);
+int		ft_check_command(t_Node *stack_B, int value, int len);
 int		ft_check_index(t_Node *stack_B, int mid, int index);
+void	ft_use_command(t_Node **stack_B, int check, int value);
 
 
 #endif
