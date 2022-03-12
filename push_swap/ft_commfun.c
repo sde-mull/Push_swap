@@ -59,10 +59,8 @@ void	ft_reverse(t_Node **stack)
 void	ft_push(t_Node **srcstack, t_Node **dststack)
 {
 	t_Node	*srctmp;
-	t_Node	*dsttmp;
 
 	srctmp = *srcstack;
-	dsttmp = *dststack;
 	if (*srcstack == NULL)
 		return ;
 	if (*dststack == NULL)

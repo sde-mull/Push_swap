@@ -16,7 +16,6 @@ void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
 {
 	int lenmid;
 	int *midarr;
-	int check;
     int index;
 
 	lenmid = ft_mid_count(*stack_A);

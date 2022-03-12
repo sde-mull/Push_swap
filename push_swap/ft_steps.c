@@ -17,9 +17,7 @@ t_Node	*ft_steps(int argc, char *argv[])
 	t_Node	*stack_a;
 	t_Node	*stack_b;
     t_Node  *temp;
-	int		index;
 
-	index = 1;
 	stack_b = NULL;
 	stack_a = ft_stack(argc, argv);
 	ft_check_double_error(&stack_a);
