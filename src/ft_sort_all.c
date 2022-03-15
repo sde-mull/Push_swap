@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
 void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
 {
 	int lenmid;
@@ -26,7 +25,7 @@ void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
 	free(midarr);
 }
 
-void    ft_send_b(t_Node **stack_A, t_Node **stack_B, int mid)
+void    ft_fill_b(t_Node **stack_A, t_Node **stack_B, int mid)
 {
 	t_Node *temp;
 	int     check;
@@ -36,18 +35,7 @@ void    ft_send_b(t_Node **stack_A, t_Node **stack_B, int mid)
 	{
 		check = ft_check_value(*stack_A, mid);
 		if (check == 1)
-		{
-			if (temp->value <= mid)
-			{
-				temp = temp->next;
-				ft_pb(stack_A, stack_B);
-			}
-			else
-			{
-				temp = temp->next;
-				ft_ra(stack_A);
-			}
-		}
+			ft_send_b(stack_A, stack_B, mid);
 		else
 			break ;
 	}
@@ -64,7 +52,7 @@ int	ft_film_check(int lenmid, int *midarr, t_Node **stack_A, t_Node **stack_B)
 		if (ft_stack_length(*stack_A) <= 3)
 			break;
 		midarr[index] = ft_retmidval(*stack_A);
-		ft_send_b(stack_A, stack_B, midarr[index]);
+		ft_fill_b(stack_A, stack_B, midarr[index]);
 		index++;
 	}
 	check = ft_check_sorted(stack_A);
@@ -78,3 +66,36 @@ int	ft_film_check(int lenmid, int *midarr, t_Node **stack_A, t_Node **stack_B)
     return (index - 1);
 }
 
+void	ft_send_b(t_Node **stack_A, t_Node **stack_B, int mid)
+{
+	int		checker;
+	t_Node	*temp;
+
+	temp = *stack_A;
+	if (temp->value <= mid)
+	{
+		temp = temp->next;
+		ft_pb(stack_A, stack_B);
+	}
+	else
+	{
+		checker = ft_check_path(*stack_A, mid);
+		ft_check_ss(stack_A, stack_B);
+		ft_command_path(stack_A, stack_B, checker, mid);
+	}
+}
+
+void	ft_command_path(t_Node **stack_A, t_Node **stack_B, int checker, int mid)
+{
+	t_Node *temp;
+
+	temp = *stack_A;
+	while (temp->value > mid)
+	{
+		if (checker == 1)
+			ft_check_rrr(stack_A, stack_B);
+		else
+			ft_check_rr(stack_A, stack_B);
+		temp = *stack_A;
+	}
+}

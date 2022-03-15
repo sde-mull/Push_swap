@@ -46,16 +46,80 @@ int ft_check_command(t_Node *stack_B, int value, int len)
     return (check);
  }
 
-/*int ft_check_index(t_Node *stack_B, int mid, int index)
+int		ft_check_path(t_Node *stack_A, int mid)
 {
-    t_Node *first;
-    t_Node *last;
+	int count;
+	int len;
+	int checker;
+    t_Node  *temp;
 
-    first = stack_B;
-    last = stack_B;
-    while (last->next != NULL)
-        last = last->next;
-    if (last->value < mid && first->value < mid)
-        return(index - 1);
-    return (index);
-}*/
+    temp = stack_A;
+	len = ft_stack_length(temp);
+	count = 0;
+	while (temp != NULL)
+	{
+		if (temp->value <= mid)
+            break;
+        count++;
+		temp = temp->next;
+	}
+	if (count > len / 2)
+		checker = 1;
+	else
+		checker = 0;
+	return (checker);
+}
+
+ void   ft_check_ss(t_Node **stack_A, t_Node **stack_B)
+{
+    t_Node  *temp_A;
+    t_Node  *temp_B;
+
+    temp_A = *stack_A;
+    temp_B = *stack_B;
+    if ((!temp_A)  || (!temp_B) || (!temp_B->next))
+        return ;
+    if (temp_A->value > temp_A->next->value 
+        && temp_B->value < temp_B->next->value)
+        ft_ss(stack_A, stack_B);
+}
+
+void ft_check_rrr(t_Node **stack_A, t_Node **stack_B)
+{
+    int     value;
+    int     check;
+    int     len;
+
+    if ((!(*stack_B)) || (!((*stack_B)->next)))
+    {
+        ft_rra(stack_A);
+        return ;
+    }
+    value  = ft_get_value(*stack_B);
+    len =    ft_stack_length(*stack_B);
+    check  = ft_check_command(*stack_B, value, len);
+    if (check == 1)
+        ft_rrr(stack_A, stack_B);
+    else
+        ft_rra(stack_A);
+}
+
+void ft_check_rr(t_Node **stack_A, t_Node **stack_B)
+{
+    int     value;
+    int     check;
+    int     len;
+
+    if ((!(*stack_B)) || (!((*stack_B)->next)))
+    {
+        ft_ra(stack_A);
+        return ;
+    }
+    value  = ft_get_value(*stack_B);
+    len =    ft_stack_length(*stack_B);
+    check  = ft_check_command(*stack_B, value, len);
+    if (check == 1)
+        ft_ra(stack_A);
+    else
+        ft_rr(stack_A, stack_B);
+}
