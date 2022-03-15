@@ -14,15 +14,12 @@
 void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
 {
 	int lenmid;
-	int *midarr;
     int index;
+    int mid;
 
-	lenmid = ft_mid_count(*stack_A);
-	midarr = malloc((lenmid) * sizeof(int));
-	index = ft_film_check(lenmid, midarr, stack_A, stack_B);
+	mid = ft_film_check(stack_A, stack_B);
 	while ((*stack_B) != NULL)
-    	ft_send_value(midarr, index, stack_A, stack_B);
-	free(midarr);
+    	ft_send_value(mid, stack_A, stack_B);
 }
 
 void    ft_fill_b(t_Node **stack_A, t_Node **stack_B, int mid)
@@ -41,18 +38,17 @@ void    ft_fill_b(t_Node **stack_A, t_Node **stack_B, int mid)
 	}
 }
 
-int	ft_film_check(int lenmid, int *midarr, t_Node **stack_A, t_Node **stack_B)
+int	ft_film_check(t_Node **stack_A, t_Node **stack_B)
 {
 	int index;
 	int check;
+    int mid;
 
 	index = 0;
-	while (index <= lenmid)
+	while (ft_stack_length(*stack_A) > 3)
 	{
-		if (ft_stack_length(*stack_A) <= 3)
-			break;
-		midarr[index] = ft_retmidval(*stack_A);
-		ft_fill_b(stack_A, stack_B, midarr[index]);
+		mid = ft_retmidval(*stack_A);
+		ft_fill_b(stack_A, stack_B, mid);
 		index++;
 	}
 	check = ft_check_sorted(stack_A);
@@ -63,7 +59,7 @@ int	ft_film_check(int lenmid, int *midarr, t_Node **stack_A, t_Node **stack_B)
 		else if (ft_stack_length(*stack_A) == 2)
 			ft_2_sort(stack_A);
 	}
-    return (index - 1);
+    return (mid);
 }
 
 void	ft_send_b(t_Node **stack_A, t_Node **stack_B, int mid)

@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-void ft_send_value(int *midarr, int index, t_Node **stack_A, t_Node **stack_B)
+void ft_send_value(int midarr, t_Node **stack_A, t_Node **stack_B)
 {
     int     value;
     t_Node *temp;
@@ -21,7 +21,7 @@ void ft_send_value(int *midarr, int index, t_Node **stack_A, t_Node **stack_B)
 
     temp = *stack_B;
     value = ft_get_value(*stack_B);
-    while (temp != NULL && temp->value <= midarr[index])
+    while (temp != NULL && temp->value <= midarr)
     {
         temp = *stack_B;
         if (value == temp->value)

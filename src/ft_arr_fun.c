@@ -17,7 +17,9 @@ int    ft_retmidval(t_Node *stack)
     int *sort_arr;
     int mid;
     int len;
+    int index;
 
+    index = 0;
     len = ft_stack_length(stack);
     sort_arr = malloc((len) * sizeof(int));
     mid = ft_get_mid_number(sort_arr, stack, len);
@@ -29,7 +31,7 @@ int     ft_get_mid_number(int *arr, t_Node *stack_A, int len)
 {
     int mid;
 
-    mid = len / 2;
+    mid = len / 4;
     ft_fill_arr(arr, stack_A, len);
     return(arr[mid - 1]);
 }
