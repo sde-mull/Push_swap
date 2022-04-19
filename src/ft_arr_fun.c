@@ -31,8 +31,15 @@ int     ft_get_mid_number(int *arr, t_Node *stack_A, int len)
 {
     int mid;
 
-    mid = len / 4;
     ft_fill_arr(arr, stack_A, len);
+    if (len == 4)
+        return (arr[len / 2 - 2]);
+    else if (len <= 30)
+        mid = len / 2;
+    else if (len <= 60)
+        mid = len / 3;
+    else if (len <= 100)
+        mid = 20;
     return(arr[mid - 1]);
 }
 

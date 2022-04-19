@@ -82,6 +82,8 @@ int		ft_check_path(t_Node *stack_A, int mid)
     if (temp_A->value > temp_A->next->value 
         && temp_B->value < temp_B->next->value)
         ft_ss(stack_A, stack_B);
+	else if (temp_B->value < temp_B->next->value)
+		ft_sb(stack_B);
 }
 
 void ft_check_rrr(t_Node **stack_A, t_Node **stack_B)
@@ -122,4 +124,15 @@ void ft_check_rr(t_Node **stack_A, t_Node **stack_B)
         ft_ra(stack_A);
     else
         ft_rr(stack_A, stack_B);
+}
+
+void   ft_check_sb(t_Node **stack_B)
+{
+    t_Node  *temp_B;
+
+    temp_B = *stack_B;
+    if ((!temp_B) || (!temp_B->next))
+        return ;
+	if (temp_B->value < temp_B->next->value)
+		ft_sb(stack_B);
 }

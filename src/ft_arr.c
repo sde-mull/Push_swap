@@ -1,50 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stacklfun.c                                     :+:      :+:    :+:   */
+/*   ft_arr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 20:51:21 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/03/03 20:51:21 by sde-mull         ###   ########.fr       */
+/*   Created: 2022/04/07 23:36:36 by sde-mull          #+#    #+#             */
+/*   Updated: 2022/04/07 23:36:36 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	ft_stack_length(t_Node *stack_A)
-{
-	t_Node	*length;
-	int		count;
-
-	length = stack_A;
-	count = 0;
-	while (length != NULL)
-	{
-		length = length->next;
-		count++;
-	}
-	return (count);
-}
-
-int    ft_retarrl(t_Node *stack, int inv)
+int    ft_retarrval(t_Node *stack, int *top, int *bot, int inv)
 {
     int *sort_arr;
+    int index;
     int mid;
     int len;
     int add;
-	int count;
 
+    index = 0;
     add = 0;
-	count = 0;
     len = ft_stack_length(stack);
     sort_arr = malloc((len) * sizeof(int));
     mid = len / 2;
     ft_fill_arr(sort_arr, stack, len);
-    while (mid - 1 - add > 0 && mid + 1 + add < len)
+    while (mid - 2 - add > 0 && mid + 2 + add < len)
     {
-		add = add + inv;
-		count++;
-	}
-	return (count);
+        top[index] = sort_arr[mid + 2 + add];
+        bot[index] = sort_arr[mid - 2 - add];
+        add = add + inv;
+        index++;
+    }
+    mid = sort_arr[len / 2];
+    free(sort_arr);
+    return(mid);
 }

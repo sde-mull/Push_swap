@@ -25,6 +25,7 @@ typedef struct Node
 	struct Node	*next;
 }	t_Node;
 
+
 void	ft_insert_number(t_Node **root, int value);
 t_Node	*ft_steps(int argc, char *argv[]);
 t_Node	*ft_stack(int argc, char *argv[]);
@@ -46,7 +47,7 @@ void	ft_pa(t_Node **stack_A, t_Node **stack_B);
 void	ft_pb(t_Node **stack_A, t_Node **stack_B);
 void	ft_sort(t_Node **stack_A, t_Node **stack_B);
 void	ft_check_number_error(char *argv);
-int		ft_check_sorted(t_Node **stack_A);
+int		ft_check_sorted(t_Node *stack_A);
 int		ft_stack_length(t_Node *stack_A);
 void	ft_check_error_limits(long long converted);
 void	ft_check_double_error(t_Node **stack_A);
@@ -57,7 +58,7 @@ void    ft_sort_all(t_Node **stack_A, t_Node **stack_B);
 void    ft_sort_arr(int *arr, int len);
 int     ft_get_mid_number(int *arr, t_Node *stack_A, int len);
 int     ft_retmidval(t_Node *stack);
-int     ft_check_inv_sorted(t_Node **stack_A);
+int		ft_check_B_numbers(t_Node *stack_A, t_Node *stack_B);
 int     ft_mid_count(t_Node *stack_A);
 void    ft_fill_b(t_Node **stack_A, t_Node **stack_B, int mid);
 int     ft_check_value(t_Node *stack, int mid);
@@ -73,5 +74,25 @@ void	ft_command_path(t_Node **stack_A, t_Node **stack_B, int checker, int mid);
 void 	ft_check_rrr(t_Node **stack_A, t_Node **stack_B);
 void	ft_check_rr(t_Node **stack_A, t_Node **stack_B);
 void   	ft_check_ss(t_Node **stack_A, t_Node **stack_B);
+void  	printstack(t_Node *stack_A, t_Node *stack_B);
+void	ft_push_a_sb(t_Node **stack_A, t_Node **stack_B);
+int   	ft_retarrval(t_Node *stack, int *top, int *bot, int inv);
+int    	ft_retarrl(t_Node *stack, int inv);
+int 	ft_check_lpath(t_Node *stack_A);
+int 	ft_checkbot(t_Node *stack, int bot1, int bot2);
+int 	ft_checktop(t_Node *stack, int top1, int top2);
+void    ft_pub(t_Node **stka, t_Node **stkb, int *top, int *bot, int c);
+int 	ft_checkib(int i, int c, t_Node *stka, int *bot);
+void 	ft_purb(t_Node **stka, t_Node **stkb, int *top, int *bot);
+void 	ft_sendtop(int midarr, t_Node **stack_A, t_Node **stack_B);
+void	ft_sendbot(int midarr, t_Node **stack_A, t_Node **stack_B);
+void    ft_sorteve(t_Node **stack_A, t_Node **stack_B);
+int 	ft_checkit(int i, int c, t_Node *stka, int *top);
+void    ft_check_sb(t_Node **stack_B);
+void 	ft_sort_5(t_Node **stack_A, t_Node **stack_B);
+int     ft_get_nvalue(t_Node *stack_B);
+int     ft_get_nnvalue(t_Node *stack_B);
+void 	ft_doc(t_Node **stack_B, int value);
+int 	ft_check_nv(int temp, int nvalue, t_Node **stack_A, t_Node **stack_B);
 
 #endif
