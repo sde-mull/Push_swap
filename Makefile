@@ -12,17 +12,12 @@ SRC_DIR=	src
 LFT_DIR=	libft
 
 SRCS=		$(shell find $(SRC_DIR) -maxdepth 1 -type f -name "*.c")
-OBJS=		$(patsubst $(SRC_DIR)/%.c,$(SRC_DIR)/%.o,$(SRCS))
 
 all: $(NAME)
 
-$(NAME): libft $(OBJS)
-
-$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): libft $(OBJS)
-	cp $(LFT_DIR)/libft.a ./push_swap
+$(NAME): $(SRCS)
+		@$(MAKE) all -C ./libft
+		@$(CC) $(CFLAGS) $(LFT_DIR)/$(LFT_DIR).a $(SRCS) -o $(NAME)
 
 libft:
 	$(MAKE) all -C ./libft
