@@ -29,22 +29,27 @@ int	ft_stack_length(t_Node *stack_A)
 
 int    ft_retarrl(t_Node *stack, int inv)
 {
-    int *sort_arr;
-    int mid;
-    int len;
-    int add;
-	int count;
+    v_ar var;
 
-    add = 0;
-	count = 0;
-    len = ft_stack_length(stack);
-    sort_arr = malloc((len) * sizeof(int));
-    mid = len / 2;
-    ft_fill_arr(sort_arr, stack, len);
-    while (mid - 1 - add > 0 && mid + 1 + add < len)
+    var.add = 0;
+	var.count = 0;
+    var.len = ft_stack_length(stack);
+    var.sort_arr = malloc((var.len) * sizeof(int));
+    var.mid = var.len / 2;
+    ft_fill_arr(var.sort_arr, stack, var.len);
+    while (var.mid - 1 - var.add > 0 && var.mid + 1 + var.add < var.len)
     {
-		add = add + inv;
-		count++;
+		var.add = var.add + inv;
+		var.count++;
 	}
-	return (count);
+	return (var.count);
+}
+
+void ft_doc(t_Node **stack_B, int value)
+{
+    v_ar    var;
+
+    var.len = ft_stack_length(*stack_B);
+    var.check = ft_check_command(*stack_B, value, var.len);
+    ft_use_command(stack_B, var.check, value);
 }

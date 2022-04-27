@@ -16,7 +16,6 @@ t_Node	*ft_steps(int argc, char *argv[])
 {
 	t_Node	*stack_a;
 	t_Node	*stack_b;
-    t_Node  *temp;
 
 	stack_b = NULL;
 	stack_a = ft_stack(argc, argv);

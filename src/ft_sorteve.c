@@ -14,28 +14,22 @@
 
 void    ft_sorteve(t_Node **stack_A, t_Node **stack_B)
 {
-    int *top;
-    int *bot;
-    int count;
-    int inv;
-    int mid;
+    v_ar    var;
 
-    inv = ft_check_lpath(*stack_A);
-    count = ft_retarrl(*stack_A, inv);
-    top = malloc(count * sizeof(int));
-    bot = malloc(count * sizeof(int));
-    mid = ft_retarrval(*stack_A, top, bot, inv);
-    ft_pub(stack_A, stack_B, top, bot, count);
-    //printstack(*stack_A,*stack_B);
+    var.inv = ft_check_lpath(*stack_A);
+    var.count = ft_retarrl(*stack_A, var.inv);
+    var.top = malloc(var.count * sizeof(int));
+    var.bot = malloc(var.count * sizeof(int));
+    var.mid = ft_retarrval(*stack_A, var.top, var.bot, var.inv);
+    ft_pub(stack_A, stack_B, var.top, var.bot, var.count);
     if (ft_check_sorted(*stack_A) == 0)
         ft_sort_5(stack_A, stack_B);
-    //printstack(*stack_A,*stack_B);
-    while (ft_get_value(*stack_B) >= mid)
-    	ft_sendtop(mid, stack_A, stack_B);
-    while ((*stack_A)->value >= mid)
+    while (ft_get_value(*stack_B) >= var.mid)
+    	ft_sendtop(var.mid, stack_A, stack_B);
+    while ((*stack_A)->value >= var.mid)
         ft_ra(stack_A);
     while ((*stack_B) != NULL)
-        ft_send_value(mid, stack_A, stack_B);
+        ft_send_value(var.mid, stack_A, stack_B);
 }
 
 void    ft_pub(t_Node **stka, t_Node **stkb, int *top, int *bot, int c)
@@ -47,11 +41,6 @@ void    ft_pub(t_Node **stka, t_Node **stkb, int *top, int *bot, int c)
     ii = 0;
     while(ft_stack_length(*stka) > 5)
     {
-        /*printf("\nbot value is this two %d |||| %d\n",  bot[ii],  bot[ii + 1]);
-        printf("top value is this two %d |||| %d\n",  top[i],  top[i + 1]);
-        printf("bot ii||| top i value is this two %d |||| %d\n", ii, i);
-        printf("stka->value value is %d\n", (*stka)->value);
-        printf("c is this value %d\n", c);*/
         if ((*stka)->value > top[i] && (*stka)->value <= top[i + 1])
             ft_pb(stka, stkb);
         else if ((*stka)->value < bot[ii] && (*stka)->value >= bot[ii + 1])

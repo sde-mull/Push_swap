@@ -12,32 +12,30 @@
 
 #include "ft_push_swap.h"
 
-void ft_sendtop(int midarr, t_Node **stack_A, t_Node **stack_B)
+void ft_sendtop(int midarr, t_Node **stkA, t_Node **stkB)
 {
-    int     value;
+    v_ar    var;
     t_Node *temp;
-    int     checked;
-    int     nvalue;
 
-    temp = *stack_B;
-    value = ft_get_value(*stack_B);
-    nvalue = ft_get_nvalue(*stack_B);
-    checked = 0;
-    while (value >= midarr)
+    temp = *stkB;
+    var.value = ft_get_value(*stkB);
+    var.nvalue = ft_get_nvalue(*stkB);
+    var.checked = 0;
+    while (var.value >= midarr)
     {
-        temp = *stack_B;
-        if (checked == 0)
-            checked = ft_check_nv(temp->value, nvalue, stack_A, stack_B);
-        if (value == temp->value)
+        temp = *stkB;
+        if (var.checked == 0)
+            var.checked = ft_check_nv(temp->value, var.nvalue, stkA, stkB);
+        if (var.value == temp->value)
         {
-            ft_pa(stack_A,stack_B);
+            ft_pa(stkA,stkB);
             break ;
         }
         else
-            ft_doc(stack_B, value);
+            ft_doc(stkB, var.value);
     }
-    if (checked == 1)
-        ft_sa(stack_A);
+    if (var.checked == 1)
+        ft_sa(stkA);
 }
 
 int     ft_get_value(t_Node *stack_B)
@@ -76,70 +74,43 @@ void ft_use_command(t_Node **stack_B, int check, int value)
     }
 }
 
-void ft_send_value(int midarr, t_Node **stack_A, t_Node **stack_B)
+void ft_send_value(int midarr, t_Node **stkA, t_Node **stkB)
 {
-    int     value;
+    v_ar    var;
     t_Node *temp;
-    int     nvalue;
-    int     checked;
 
-    temp = *stack_B;
-    checked = 0;
-    nvalue = ft_get_nvalue(*stack_B);
-    value = ft_get_value(*stack_B);
+    temp = *stkB;
+    var.checked = 0;
+    var.nvalue = ft_get_nvalue(*stkB);
+    var.value = ft_get_value(*stkB);
     while (temp != NULL && temp->value <= midarr)
     {
-        temp = *stack_B;
-        if (checked != 1)
-            checked = ft_check_nv(temp->value, nvalue, stack_A, stack_B);
-        if (value == temp->value)
+        temp = *stkB;
+        if (var.checked != 1)
+            var.checked = ft_check_nv(temp->value, var.nvalue, stkA, stkB);
+        if (var.value == temp->value)
         {;
-            ft_pa(stack_A, stack_B);
+            ft_pa(stkA, stkB);
             break ;
         }
         else
-            ft_doc(stack_B, value);
+            ft_doc(stkB, var.value);
     }
-    if (checked == 1)
-        ft_sa(stack_A);
+    if (var.checked == 1)
+        ft_sa(stkA);
 }
 
 int     ft_get_nvalue(t_Node *stack_B)
 {
 	t_Node  *temp;
-    int     value;
-    int     len;
-    int     *arr;
+    v_ar    var;
+    
 
     temp = stack_B;
-    len = ft_stack_length(stack_B);
-    arr = malloc(sizeof(int) * len);
-    ft_fill_arr(arr, stack_B, len);
-    value = arr[len - 2];
-    free(arr);
-    return (value);
-}
-
-void ft_doc(t_Node **stack_B, int value)
-{
-    int     len;
-    int     check;
-
-    len = ft_stack_length(*stack_B);
-    check = ft_check_command(*stack_B, value, len);
-    ft_use_command(stack_B, check, value);
-}
-
-int ft_check_nv(int temp, int nvalue, t_Node **stack_A, t_Node **stack_B)
-{
-    int checked;
-
-    checked = 0;
-    if (nvalue == temp)
-    {
-        ft_pa(stack_A,stack_B);
-        checked = 1;
-        return (checked);
-    }
-    return (checked);
+    var.len = ft_stack_length(stack_B);
+    var.arr = malloc(sizeof(int) * var.len);
+    ft_fill_arr(var.arr, stack_B, var.len);
+    var.value = var.arr[var.len - 2];
+    free(var.arr);
+    return (var.value);
 }

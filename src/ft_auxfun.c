@@ -35,19 +35,18 @@ void	ft_insert_number(t_Node **root, int value)
 
 t_Node	*ft_stack(int argc, char *argv[])
 {
-	int			index;
-	long long	converted;
+	v_ar 		var;
 	t_Node		*root;
 
 	root = NULL;
-	index = 1;
-	while (index < argc)
+	var.index = 1;
+	while (var.index < argc)
 	{
-		ft_check_number_error(argv[index]);
-		converted = ft_atoil(argv[index]);
-		ft_check_error_limits(converted);
-		ft_insert_number(&root, converted);
-		index++;
+		ft_check_number_error(argv[var.index]);
+		var.converted = ft_atoil(argv[var.index]);
+		ft_check_error_limits(var.converted);
+		ft_insert_number(&root, var.converted);
+		var.index++;
 	}
 	return (root);
 }
@@ -66,19 +65,3 @@ void	ft_deallocate(t_Node **root)
 	}
 	*root = NULL;
 }
-
-/*int ft_mid_count(t_Node *stack_A)
-{
-    int count;
-    int len;
-
-    count = 0;
-    len = ft_stack_length(stack_A);
-    while (len != 2 && len != 3)
-    {
-        len = len / 4;
-        
-        count += 1;
-    }
-    return (count);
-}*/

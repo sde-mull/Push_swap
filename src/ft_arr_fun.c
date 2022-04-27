@@ -14,17 +14,14 @@
 
 int    ft_retmidval(t_Node *stack)
 {
-    int *sort_arr;
-    int mid;
-    int len;
-    int index;
+    v_ar var;
 
-    index = 0;
-    len = ft_stack_length(stack);
-    sort_arr = malloc((len) * sizeof(int));
-    mid = ft_get_mid_number(sort_arr, stack, len);
-    free(sort_arr);
-    return (mid);
+    var.index = 0;
+    var.len = ft_stack_length(stack);
+    var.sort_arr = malloc((var.len) * sizeof(int));
+    var.mid = ft_get_mid_number(var.sort_arr, stack, var.len);
+    free(var.sort_arr);
+    return (var.mid);
 }
 
 int     ft_get_mid_number(int *arr, t_Node *stack_A, int len)
@@ -38,7 +35,7 @@ int     ft_get_mid_number(int *arr, t_Node *stack_A, int len)
         mid = len / 2;
     else if (len <= 60)
         mid = len / 3;
-    else if (len <= 100)
+    else
         mid = 20;
     return(arr[mid - 1]);
 }
@@ -61,24 +58,22 @@ void    ft_fill_arr(int *arr, t_Node *stack_A, int len)
 
 void    ft_sort_arr(int *arr, int len)
 {
-    int first;
-    int second;
-    int swap;
+    v_ar var;
 
-    first = 0;
-    while (first < len)
+    var.first = 0;
+    while (var.first < len)
     {
-        second = first + 1;
-        while (second < len)
+        var.second = var.first + 1;
+        while (var.second < len)
         {
-            if (arr[first] > arr[second])
+            if (arr[var.first] > arr[var.second])
             {
-                swap = arr[first];
-                arr[first] = arr[second];
-                arr[second] = swap;
+                var.swap = arr[var.first];
+                arr[var.first] = arr[var.second];
+                arr[var.second] = var.swap;
             }
-            second++;
+            var.second++;
         }
-        first++;
+        var.first++;
     }
 }

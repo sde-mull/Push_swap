@@ -17,7 +17,6 @@ void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
     int mid;
 
  	mid = ft_film_check(stack_A, stack_B);
-	//printstack(*stack_A, *stack_B);
 	while ((*stack_B) != NULL)
     	ft_send_value(mid, stack_A, stack_B);
 }
@@ -25,40 +24,37 @@ void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
 void    ft_fill_b(t_Node **stack_A, t_Node **stack_B, int mid)
 {
 	t_Node *temp;
-	int     check;
-	int		check_nbr;
+	v_ar	var;
 
 	temp = *stack_A;
 	while (temp != NULL)
 	{
-		check = ft_check_value(*stack_A, mid);
-		if (check == 1)
+		var.check = ft_check_value(*stack_A, mid);
+		if (var.check == 1)
 			ft_send_b(stack_A, stack_B, mid);
 		else
 			break ;
-		check_nbr = ft_check_B_numbers(*stack_A, *stack_B);
-		if (ft_check_sorted(*stack_A) == 1 && check_nbr == 1)
+		var.check_nbr = ft_check_B_numbers(*stack_A, *stack_B);
+		if (ft_check_sorted(*stack_A) == 1 && var.check_nbr == 1)
             break;
 	}
 }
 
 int	ft_film_check(t_Node **stack_A, t_Node **stack_B)
 {
-	int index;
-	int check;
-    int mid;
+	v_ar var;
 
-	index = 0;
+	var.index = 0;
 	while (ft_stack_length(*stack_A) > 6)
 	{
 		if (ft_check_sorted(*stack_A) == 1)
 			break;
-		mid = ft_retmidval(*stack_A);
-		ft_fill_b(stack_A, stack_B, mid);
-		index++;
+		var.mid = ft_retmidval(*stack_A);
+		ft_fill_b(stack_A, stack_B, var.mid);
+		var.index++;
 	}
-	check = ft_check_sorted(*stack_A);
-	if (check == 0)
+	var.check = ft_check_sorted(*stack_A);
+	if (var.check == 0)
 	{
 		if (ft_stack_length(*stack_A) == 3)
 			ft_3_sort(stack_A);
@@ -67,7 +63,7 @@ int	ft_film_check(t_Node **stack_A, t_Node **stack_B)
 		else if (ft_stack_length(*stack_A) <= 5)
 			ft_sort_5(stack_A, stack_B);
 	}
-    return (mid);
+    return (var.mid);
 }
 
 void	ft_send_b(t_Node **stack_A, t_Node **stack_B, int mid)

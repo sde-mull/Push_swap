@@ -14,21 +14,20 @@
 
 void	ft_sort(t_Node **stack_A, t_Node **stack_B)
 {
-	int	count;
-	int	sort;
+	v_ar	var;
 
-	sort = 0;
-	sort = ft_check_sorted(*stack_A);
-	count = ft_stack_length(*stack_A);
-	if (sort == 1)
+	var.sort = 0;
+	var.sort = ft_check_sorted(*stack_A);
+	var.count = ft_stack_length(*stack_A);
+	if (var.sort == 1)
 		return ;
-	else if (count == 2)
+	else if (var.count == 2)
 		ft_2_sort(stack_A);
-	else if (count == 3)
+	else if (var.count == 3)
 		ft_3_sort(stack_A);
-	else if (count <= 5)
+	else if (var.count <= 5)
 		ft_sort_5(stack_A, stack_B);
-	else if (count <= 400)
+	else if (var.count <= 400)
 		ft_sort_all(stack_A, stack_B);
 	else
 		ft_sorteve(stack_A, stack_B);
@@ -69,28 +68,24 @@ void	ft_3_sort(t_Node **stack_A)
 
 void ft_sort_5(t_Node **stack_A, t_Node **stack_B)
 {
-	int mid;
-	int count;
-	int checker;
+	v_ar	var;
 
-	count = 0;
-	mid = ft_retmidval(*stack_A);
+	var.count = 0;
+	var.mid = ft_retmidval(*stack_A);
 	while (ft_stack_length(*stack_A) > 3)
 	{
-		if ((*stack_A)->value <= mid)
+		if ((*stack_A)->value <= var.mid)
 		{
 			ft_pb(stack_A, stack_B);
-			count++;
+			var.count++;
 		}
 		else
 			ft_ra(stack_A);
 	}
 	ft_check_sb(stack_B);
-	//printstack(*stack_A,*stack_B);
 	if (ft_check_sorted(*stack_A) == 0)
 		ft_3_sort(stack_A);
-	//printstack(*stack_A,*stack_B);
-	while (count-- != 0)
+	while (var.count-- != 0)
 		ft_pa(stack_A, stack_B);
 }
 

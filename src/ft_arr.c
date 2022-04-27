@@ -14,26 +14,22 @@
 
 int    ft_retarrval(t_Node *stack, int *top, int *bot, int inv)
 {
-    int *sort_arr;
-    int index;
-    int mid;
-    int len;
-    int add;
+    v_ar var;
 
-    index = 0;
-    add = 0;
-    len = ft_stack_length(stack);
-    sort_arr = malloc((len) * sizeof(int));
-    mid = len / 2;
-    ft_fill_arr(sort_arr, stack, len);
-    while (mid - 2 - add > 0 && mid + 2 + add < len)
+    var.index = 0;
+    var.add = 0;
+    var.len = ft_stack_length(stack);
+    var.sort_arr = malloc((var.len) * sizeof(int));
+    var.mid = var.len / 2;
+    ft_fill_arr(var.sort_arr, stack, var.len);
+    while (var.mid - 2 - var.add > 0 && var.mid + 2 + var.add < var.len)
     {
-        top[index] = sort_arr[mid + 2 + add];
-        bot[index] = sort_arr[mid - 2 - add];
-        add = add + inv;
-        index++;
+        top[var.index] = var.sort_arr[var.mid + 2 + var.add];
+        bot[var.index] = var.sort_arr[var.mid - 2 - var.add];
+        var.add = var.add + inv;
+        var.index++;
     }
-    mid = sort_arr[len / 2];
-    free(sort_arr);
-    return(mid);
+    var.mid = var.sort_arr[var.len / 2];
+    free(var.sort_arr);
+    return(var.mid);
 }
