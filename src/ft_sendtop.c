@@ -24,7 +24,7 @@ void ft_sendtop(int midarr, t_Node **stkA, t_Node **stkB)
     while (var.value >= midarr)
     {
         temp = *stkB;
-        if (var.checked == 0)
+        if (var.checked == 0 && var.nvalue >= midarr)
             var.checked = ft_check_nv(temp->value, var.nvalue, stkA, stkB);
         if (var.value == temp->value)
         {
@@ -102,11 +102,8 @@ void ft_send_value(int midarr, t_Node **stkA, t_Node **stkB)
 
 int     ft_get_nvalue(t_Node *stack_B)
 {
-	t_Node  *temp;
     v_ar    var;
-    
 
-    temp = stack_B;
     var.len = ft_stack_length(stack_B);
     var.arr = malloc(sizeof(int) * var.len);
     ft_fill_arr(var.arr, stack_B, var.len);

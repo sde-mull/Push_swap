@@ -44,7 +44,7 @@ int ft_check_lpath(t_Node *stack_A)
     else if (len <= 100)
         return (20);
     else
-        return (25);
+        return (30);
 }
 
 int ft_checktop(t_Node *stack, int top1, int top2)
