@@ -23,6 +23,7 @@ libft:
 	$(MAKE) all -C ./libft
 
 clean:
+	$(CD) $(LFT_DIR) && make -i clean
 	$(RM) $(OBJS)
 
 fclean: clean

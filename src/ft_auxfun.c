@@ -35,7 +35,7 @@ void	ft_insert_number(t_Node **root, int value)
 
 t_Node	*ft_stack(int argc, char *argv[])
 {
-	v_ar 		var;
+	t_ar		var;
 	t_Node		*root;
 
 	root = NULL;

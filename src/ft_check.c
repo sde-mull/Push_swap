@@ -77,16 +77,16 @@ int	ft_check_sorted(t_Node *stack_A)
 	return (1);
 }
 
-int	ft_check_B_numbers(t_Node *stack_A, t_Node *stack_B)
+int	ft_check_b_numbers(t_Node *stack_A, t_Node *stack_B)
 {
-	t_Node	*nbrB;
+	t_Node	*nbrb;
 
-	nbrB = stack_B;
-	while (nbrB != NULL)
+	nbrb = stack_B;
+	while (nbrb != NULL)
 	{
-		if (stack_A->value < nbrB->value)
-            return (0);
-        nbrB = nbrB->next;
+		if (stack_A->value < nbrb->value)
+			return (0);
+		nbrb = nbrb->next;
 	}
 	return (1);
 }

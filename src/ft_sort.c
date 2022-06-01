@@ -14,7 +14,7 @@
 
 void	ft_sort(t_Node **stack_A, t_Node **stack_B)
 {
-	v_ar	var;
+	t_ar	var;
 
 	var.sort = 0;
 	var.sort = ft_check_sorted(*stack_A);
@@ -66,9 +66,9 @@ void	ft_3_sort(t_Node **stack_A)
 		ft_rra(stack_A);
 }
 
-void ft_sort_5(t_Node **stack_A, t_Node **stack_B)
+void	ft_sort_5(t_Node **stack_A, t_Node **stack_B)
 {
-	v_ar	var;
+	t_ar	var;
 
 	var.count = 0;
 	var.mid = ft_retmidval(*stack_A);
@@ -88,4 +88,3 @@ void ft_sort_5(t_Node **stack_A, t_Node **stack_B)
 	while (var.count-- != 0)
 		ft_pa(stack_A, stack_B);
 }
-

@@ -12,53 +12,52 @@
 
 #include "ft_push_swap.h"
 
-int ft_check_value(t_Node *stack, int mid)
+int	ft_check_value(t_Node *stack, int mid)
 {
-    t_Node *temp;
+	t_Node	*temp;
 
-    temp = stack;
-    while (temp != NULL)
-    {
-        if (temp->value <= mid)
-            return (1);
-        temp = temp->next;
-    }
-    return(0);
+	temp = stack;
+	while (temp != NULL)
+	{
+		if (temp->value <= mid)
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
 }
 
-int ft_check_command(t_Node *stack_B, int value, int len)
+int	ft_check_command(t_Node *stack_B, int value, int len)
 {
-    t_Node *first;
-    v_ar    var;
+	t_Node	*first;
+	t_ar	var;
 
-    first = stack_B;
-    var.count = 0;
-    while (first->value != value)
-    {
-        first = first->next;
-        var.count++;
-    }
-    if (var.count > (len / 2))
-        var.check = 1;
-    else
-        var.check = 0;
-    return (var.check);
- }
+	first = stack_B;
+	var.count = 0;
+	while (first->value != value)
+	{
+		first = first->next;
+		var.count++;
+	}
+	if (var.count > (len / 2))
+		var.check = 1;
+	else
+		var.check = 0;
+	return (var.check);
+}
 
-int		ft_check_path(t_Node *stack_A, int mid)
+int	ft_check_path(t_Node *stack_A, int mid)
 {
-	
-    t_Node  *temp;
-    v_ar    var;
+	t_Node	*temp;
+	t_ar	var;
 
-    temp = stack_A;
+	temp = stack_A;
 	var.len = ft_stack_length(temp);
 	var.count = 0;
 	while (temp != NULL)
 	{
 		if (temp->value <= mid)
-            break;
-        var.count++;
+			break ;
+		var.count++;
 		temp = temp->next;
 	}
 	if (var.count > var.len / 2)
@@ -68,16 +67,16 @@ int		ft_check_path(t_Node *stack_A, int mid)
 	return (var.checker);
 }
 
- int ft_check_nv(int temp, int nvalue, t_Node **stack_A, t_Node **stack_B)
+int	ft_check_nv(int temp, int nvalue, t_Node **stack_A, t_Node **stack_B)
 {
-    int checked;
+	int	checked;
 
-    checked = 0;
-    if (nvalue == temp)
-    {
-        ft_pa(stack_A,stack_B);
-        checked = 1;
-        return (checked);
-    }
-    return (checked);
+	checked = 0;
+	if (nvalue == temp)
+	{
+		ft_pa(stack_A, stack_B);
+		checked = 1;
+		return (checked);
+	}
+	return (checked);
 }

@@ -12,19 +12,19 @@
 
 #include "ft_push_swap.h"
 
-void    ft_sort_all(t_Node **stack_A, t_Node **stack_B)
+void	ft_sort_all(t_Node **stack_A, t_Node **stack_B)
 {
-    int mid;
+	int	mid;
 
- 	mid = ft_film_check(stack_A, stack_B);
+	mid = ft_film_check(stack_A, stack_B);
 	while ((*stack_B) != NULL)
-    	ft_send_value(mid, stack_A, stack_B);
+		ft_send_value(mid, stack_A, stack_B);
 }
 
-void    ft_fill_b(t_Node **stack_A, t_Node **stack_B, int mid)
+void	ft_fill_b(t_Node **stack_A, t_Node **stack_B, int mid)
 {
-	t_Node *temp;
-	v_ar	var;
+	t_Node	*temp;
+	t_ar	var;
 
 	temp = *stack_A;
 	while (temp != NULL)
@@ -34,21 +34,21 @@ void    ft_fill_b(t_Node **stack_A, t_Node **stack_B, int mid)
 			ft_send_b(stack_A, stack_B, mid);
 		else
 			break ;
-		var.check_nbr = ft_check_B_numbers(*stack_A, *stack_B);
+		var.check_nbr = ft_check_b_numbers(*stack_A, *stack_B);
 		if (ft_check_sorted(*stack_A) == 1 && var.check_nbr == 1)
-            break;
+			break ;
 	}
 }
 
 int	ft_film_check(t_Node **stack_A, t_Node **stack_B)
 {
-	v_ar var;
+	t_ar	var;
 
 	var.index = 0;
 	while (ft_stack_length(*stack_A) > 6)
 	{
 		if (ft_check_sorted(*stack_A) == 1)
-			break;
+			break ;
 		var.mid = ft_retmidval(*stack_A);
 		ft_fill_b(stack_A, stack_B, var.mid);
 		var.index++;
@@ -63,7 +63,7 @@ int	ft_film_check(t_Node **stack_A, t_Node **stack_B)
 		else if (ft_stack_length(*stack_A) <= 5)
 			ft_sort_5(stack_A, stack_B);
 	}
-    return (var.mid);
+	return (var.mid);
 }
 
 void	ft_send_b(t_Node **stack_A, t_Node **stack_B, int mid)
@@ -83,14 +83,14 @@ void	ft_send_b(t_Node **stack_A, t_Node **stack_B, int mid)
 	{
 		checker = ft_check_path(*stack_A, mid);
 		ft_check_ss(stack_A, stack_B);
-		ft_command_path(stack_A, stack_B, checker, mid);
+		ft_cmd_path(stack_A, stack_B, checker, mid);
 		ft_check_ss(stack_A, stack_B);
 	}
 }
 
-void	ft_command_path(t_Node **stack_A, t_Node **stack_B, int checker, int mid)
+void	ft_cmd_path(t_Node **stack_A, t_Node **stack_B, int checker, int mid)
 {
-	t_Node *temp;
+	t_Node	*temp;
 
 	temp = *stack_A;
 	while (temp->value > mid)
