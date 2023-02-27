@@ -162,6 +162,5 @@ void	ft_doc(t_Node **stack_B, int value);
 //ft_steps
 
 t_Node	*ft_steps(int argc, char *argv[]);
-void	printstack(t_Node *stack_A, t_Node *stack_B);
 
 #endif

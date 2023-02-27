@@ -23,24 +23,3 @@ t_Node	*ft_steps(int argc, char *argv[])
 	ft_sort(&stack_a, &stack_b);
 	return (stack_a);
 }
-
-/*void  printstack(t_Node *stack_A, t_Node *stack_B)
-{
-    t_Node  *temp;
-
-    temp = stack_A;
-    printf("\n\nstack_a:\n");
-    while (temp != NULL)
-    {
-        printf("%d\n", temp->value);
-        temp = temp->next;
-    }
-    temp = stack_B;
-    printf("\nstack_b:\n");
-    while (temp != NULL)
-    {
-        printf("%d\n", temp->value);
-        temp = temp->next;
-    }
-    printf("\n");
-}*/

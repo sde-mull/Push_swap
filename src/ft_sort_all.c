@@ -45,7 +45,7 @@ int	ft_film_check(t_Node **stack_A, t_Node **stack_B)
 	t_ar	var;
 
 	var.index = 0;
-	while (ft_stack_length(*stack_A) > 6)
+	while (ft_stack_length(*stack_A) >= 6)
 	{
 		if (ft_check_sorted(*stack_A) == 1)
 			break ;
